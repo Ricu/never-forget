@@ -1,0 +1,50 @@
+services:
+  backend:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    working_dir: /workspace
+    command: >
+      sh -c "cd backend &&
+      uv sync --frozen &&
+      cd /workspace &&
+      uv run --project backend python -m uvicorn
+      backend.entrypoints.http_api:create_app
+      --factory
+      --host 0.0.0.0
+      --port 8000
+      --reload
+      --reload-dir backend"
+    env_file:
+      - .env
+    environment:
+      PYTHONUNBUFFERED: "1"
+      DIARY_DATA_DIR: /workspace/backend/data
+      LANGFUSE_HOST: ${DOCKER_LANGFUSE_HOST:-http://host.docker.internal:3000}
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/workspace
+      - backend_venv:/workspace/backend/.venv
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  frontend:
+    image: node:20-bookworm-slim
+    working_dir: /workspace/frontend
+    command: >
+      sh -c "npm install &&
+      npm run dev -- --host 0.0.0.0 --port 5173"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: "300"
+      VITE_API_PROXY_TARGET: http://backend:8000
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/workspace
+      - frontend_node_modules:/workspace/frontend/node_modules
+
+volumes:
+  backend_venv:
+  frontend_node_modules:
