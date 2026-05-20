@@ -15,3 +15,7 @@ Fields:
 ## Time Travel
 
 Have a global time control to go back to a specific point in time.
+
+## Detect bad audio/transcript early
+
+Have a mechanism that detects if the input is non-sense for some reason (e.g. bad audio leading to bad transcripts)
