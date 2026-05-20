@@ -16,7 +16,7 @@ The frontend is a local-first SPA that talks to a separate Python backend.
 | Forms | React Hook Form + Zod ||
 | Icons | `lucide-react` ||
 | AI Integration Toolkit | Vercel AI SDK UI | Use AI SDK UI only for frontend chat/streaming hooks and UI state. Do not use AI SDK Core for model calls or agent orchestration; that belongs to the Python backend. [AI SDK UI Docs](https://ai-sdk.dev/docs/ai-sdk-ui/overview). [PydanticAI - AI SDK UI Integration Docs](https://pydantic.dev/docs/ai/integrations/ui/vercel-ai/)|
-| Agent Stream Protocols | AI SDK UI data stream protocol | Default protocol for streamed agent interaction. [Docs](https://ai-sdk.dev/docs/ai-sdk-ui/stream-protocol) |
+| Agent Stream Protocols | Vercel AI SDK UI data stream protocol | Default protocol for streamed agent interaction. [Docs](https://ai-sdk.dev/docs/ai-sdk-ui/stream-protocol) |
 | Linting/formatting | ESLint + Prettier ||
 
 ## Notes

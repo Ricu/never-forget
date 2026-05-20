@@ -12,8 +12,8 @@ This document records the backend tech stack as it stands, plus the main caveats
 | ASGI server | Uvicorn | Runtime for the FastAPI app. |
 | Validation / schemas | Pydantic v2 | Already used in the backend model layer. |
 | LLM orchestration | PydanticAI | Current extraction orchestration approach for phase 1. |
-| Agent UI protocol | AG-UI | Default protocol for streamed agent interaction between frontend and backend. |
-| AG-UI adapter | PydanticAI `AGUIAdapter` | Preferred integration path for exposing FastAPI endpoints as AG-UI streams. |
+| Agent UI protocol | Vercel AI SDK UI data stream protocol | Default protocol for streamed agent interaction between frontend and backend. |
+| Agent UI integration | PydanticAI / Vercel AI SDK UI integration | Preferred integration path for exposing FastAPI endpoints as Vercel AI SDK UI data streams. |
 | LLM provider | OpenAI | Used for both extraction and transcription in phase 1. |
 | Extraction model | `openai:gpt-4.1-mini` | Current default. Can be revisited later based on quality. |
 | Transcription model | `whisper-1` | Current default. Can be revisited later based on quality and offline needs. |
@@ -31,7 +31,7 @@ This document records the backend tech stack as it stands, plus the main caveats
 ## Phase-1 Caveats
 
 * The current backend is still CLI-first in implementation, even though FastAPI is the chosen direction for the next step.
-* AG-UI is the intended streaming contract, but the current backend does not expose an AG-UI HTTP endpoint yet.
+* The Vercel AI SDK UI data stream protocol is the intended streaming contract, but the current backend does not expose a streaming HTTP endpoint yet.
 * SQLite is the right phase-1 store, but the current schema is still evolving, so migration tooling is intentionally deferred.
 * OpenAI stays in the loop for phase 1, which means the backend is not fully offline despite the broader product direction.
 * The current config approach is transitional. `pydantic-settings` should replace the custom env handling when the HTTP API is introduced.

@@ -10,10 +10,12 @@ Stage 1 should validate the full capture pipeline through a minimal local web ap
 
 1. user submits input
 2. backend creates a capture session
-3. backend transcribes when needed
-4. LLM extracts memories
-5. extracted artifacts are persisted
-6. results become inspectable in the UI
+3. capture session is registered in the review queue
+4. backend transcribes when needed
+5. LLM extracts memories
+6. extracted artifacts are persisted and become immediately usable
+7. results become inspectable in the review queue UI
+8. user can mark the capture session as reviewed
 
 The main purpose of Stage 1 is not broad product completeness. It is to make the pipeline real, inspectable, and reusable across multiple capture sessions.
 
@@ -49,18 +51,21 @@ Submitting an input starts the capture pipeline immediately.
 The Stage-1 backend flow is:
 
 1. create capture session
-2. transcribe if the input is audio
-3. run extraction agent
-4. persist created memories and any created persons
-5. return final run status
+2. register the capture session in the review queue
+3. transcribe if the input is audio
+4. run extraction agent
+5. persist created memories and any created persons
+6. return final run status
 
 The pipeline may stay synchronous internally, but the frontend should experience it as a streamed run.
+
+Persisted artifacts should be immediately available to the rest of the system. Stage 1 must implement the review queue as the main place where capture-session results become inspectable and can be marked as reviewed. Rich correction and reprocessing workflows can remain out of scope for the first increment.
 
 Audio inputs must be normalized into app-managed storage before or during processing so uploaded files and browser recordings are later accessible from the same location.
 
 ### Streaming UX
 
-The frontend should receive a live event stream for an active capture run using AG-UI as the default protocol.
+The frontend should receive a live event stream for an active capture run using the Vercel AI SDK UI data stream protocol as the default protocol.
 
 The primary visible stream content is assistant chat-completion style output. The stream must also carry backend events needed to render progress and persistence outcomes.
 
@@ -74,9 +79,9 @@ Minimum useful event types:
 * run completed
 * run failed
 
-Where AG-UI already provides a suitable standard event, the backend should use it. Product-specific needs may be added through custom events.
+Where the Vercel AI SDK UI data stream protocol already provides a suitable standard event, the backend should use it. Product-specific needs may be added through custom events.
 
-Artifacts persisted during the run must be surfaced in the active session view without requiring a manual refresh.
+Artifacts persisted during the run must be surfaced in the active session or review queue UI without requiring a manual refresh.
 
 ### Persisted Data In Scope
 
@@ -88,6 +93,7 @@ Persisted records in scope:
 * memories
 * persons
 * managed audio files referenced by capture sessions
+* review status for capture sessions
 
 The frontend must read persisted data back from storage and show it across sessions.
 
@@ -137,6 +143,20 @@ Minimum capture-session list capabilities:
 
 Capture-session detail must also support editing metadata and transcript fields that are explicitly made editable in the UI.
 
+### Review Queue
+
+The frontend must provide a review queue for capture sessions.
+
+Minimum Stage-1 capabilities:
+
+* list capture sessions that are not yet reviewed
+* show enough run status to understand whether processing is pending, running, completed, or failed
+* open the capture-session detail from the queue
+* inspect the transcript and persisted artifacts produced from the session
+* mark a capture session as reviewed
+
+The review queue is not a full correction workflow in Stage 1. It is the required end-to-end inspection and acknowledgement surface for capture sessions, including completed capture runs.
+
 ### Contacts
 
 The frontend must provide basic contact management centered on persons created or linked during extraction.
@@ -156,6 +176,7 @@ Stage 1 contact management is basic CRUD plus linked-memory inspection. Rich ded
 The user should be able to navigate easily between:
 
 * active run view
+* review queue
 * memory overview
 * memory detail
 * capture session detail
@@ -164,9 +185,11 @@ The user should be able to navigate easily between:
 
 ### Review Loop
 
-A review / correction loop is a known future part of the product but is out of scope for the first Stage-1 increment.
+The minimal review queue is in scope for the first Stage-1 increment.
 
-The Stage-1 design should leave a natural insertion point after extraction and around artifact persistence.
+The user must be able to inspect a capture session's transcript and persisted artifacts from the review queue and mark the session as reviewed.
+
+A full correction and reprocessing workflow is out of scope for the first Stage-1 increment.
 
 ## Out Of Scope
 
@@ -178,7 +201,7 @@ These are explicitly not required for the first Stage-1 increment:
 * authentication
 * mobile app
 * background-job architecture
-* review / correction workflow
+* full correction / reprocessing workflow
 * advanced contact merge tooling
 * batch web upload
 
@@ -188,10 +211,11 @@ Stage 1 is successful when a user can:
 
 1. submit text, an uploaded audio file, or a fresh voice recording from the web UI
 2. watch the run progress through a live stream
-3. see newly persisted memories appear as part of the run result
+3. see newly persisted memories appear as part of the run result or review queue entry
 4. later open the memory overview and still find those memories
-5. open a capture session and inspect its transcript, produced artifacts, and original audio when available
-6. open a contact and inspect the memories linked to that person
+5. open a capture session from the review queue and inspect its transcript, produced artifacts, and original audio when available
+6. mark a capture session as reviewed
+7. open a contact and inspect the memories linked to that person
 
 ## Open Product Questions
 
