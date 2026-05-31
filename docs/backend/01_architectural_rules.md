@@ -1,6 +1,6 @@
 # Backend Architectural Rules
 
-This document defines the architectural rules for the backend in phase 1.
+This document defines the architectural rules for the backend in the current first version.
 
 The goal is a backend that stays simple, supports the current product phase, and does not become muddy once the API and read side are added.
 
@@ -22,7 +22,7 @@ Prefer the simplest solution that supports the current phase.
 
 Implications:
 
-* keep the backend synchronous in phase 1
+* keep the backend synchronous in the current first version
 * avoid premature abstractions
 * do not add infrastructure that is not solving a real problem yet
 

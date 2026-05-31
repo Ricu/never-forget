@@ -2,13 +2,13 @@
 
 LLM processing starts after the capture session has processable text, either from direct text input or from preprocessing.
 
-This stage is responsible for extracting meaningful artifacts from the transcript or submitted text. It is less deterministic than preprocessing and persistence because the agent may call tools, resolve context, or request user input.
+This stage is responsible for extracting meaningful artifacts from the transcript or submitted text. It is less deterministic than preprocessing and persistence because the assistant may call tools, resolve context, or require user input.
 
-## Agent Runs
+## Interaction During Processing
 
-An agent run starts from available capture-session input and tries to produce usable artifacts.
+The interaction attached to a capture session starts from available input and tries to produce usable memories.
 
-The agent may:
+During processing, the assistant may:
 
 - extract memories
 - search for existing persons or other relevant entities
@@ -20,7 +20,7 @@ Some captures may pause before completion when user input is necessary, for exam
 
 ## Interactive Tool Calls
 
-Interactivity can be modeled as part of the review flow. If an agent needs user input, the capture session can remain in the review queue with a pending question. When the user answers, that answer can resume the relevant processing.
+Interactivity can be modeled as part of the review flow. If processing needs user input, the capture session can remain in the review queue until the user returns. When the user answers, that answer can resume the relevant processing.
 
 Example:
 
@@ -30,7 +30,7 @@ If the agent finds two possible Annas, it may need the user to identify the corr
 
 ## Corrections And Reprocessing
 
-Corrections before or during LLM processing may require rerunning a non-deterministic part of the pipeline. Examples include changing the transcript, changing an earlier answer, or adding more input to the capture session.
+Corrections before or during LLM processing may require rerunning a non-deterministic part of the flow. Examples include changing the transcript, changing an earlier answer, or responding to deferred user-input requests.
 
 The exact correction model is unresolved and should be clarified later.
 

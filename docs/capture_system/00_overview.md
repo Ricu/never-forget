@@ -4,13 +4,13 @@ The capture system is at the heart of the application.
 
 ## Overview
 
-The capture system turns human input into stored information while keeping capture lightweight. It is built around capture sessions. A capture session is created from user input, immediately registered in the review queue, and then moves through preprocessing, LLM processing, and persistence.
+The capture system turns human input into stored information while keeping capture lightweight. It is built around capture sessions. A capture session is created from user input, immediately registered in the review queue, and then progresses through preprocessing, LLM processing, persistence, and later review or continuation as needed.
 
-The review queue is not the final stage of the pipeline. It is the user's way to inspect or resume a capture session at whatever state it is currently in.
+The review queue is not the final stage of a linear pipeline. It is the user's way to inspect or resume a capture session at whatever state it is currently in. Review begins as soon as the capture session exists.
 
 Generated artifacts should generally become immediately usable once they have been created and persisted. Review and correction should improve or update that information after the fact, rather than making captured information unusable until the user has reviewed it.
 
-The pipeline should avoid getting stuck where possible. Some cases may still require user input, for example when a referenced person cannot be resolved confidently.
+The capture flow should avoid getting stuck where possible. Some cases may still require user input when the system should not guess.
 
 **Standard Flow**
 
@@ -73,54 +73,3 @@ Examples of Capture Interfaces include:
 All Capture Interfaces ultimately produce the same output: a **Capture Session**.
 
 The LLM does **not manage stored memories**, update records, or perform CRUD operations. It only emits extraction results.
-
-## Product Workflow
-
-### Step 1 - Capture
-
-User records audio or submits another supported input.
-
-System creates a CaptureSession.
-
-The CaptureSession is registered in the review queue.
-
-### Step 2 - Preprocessing
-
-Audio is transcribed using ASR.
-
-Transcript is stored in the CaptureSession.
-
-### Step 3 - LLM Processing
-
-The transcript or submitted text is provided to an LLM.
-
-The LLM extracts memories representing meaningful information.
-
-LLM processing is less deterministic than the surrounding pipeline because it may call tools, resolve context, or request user input when necessary.
-
-### Step 4 - Persistence
-
-Memories are persisted using a batch ingestion tool.
-
-Persisted artifacts should generally be immediately available to the rest of the system.
-
-### Step 5 - Review
-
-The user can open the capture session from the review queue. Review may happen immediately after capture or later. Immediate review is a UI and orchestration choice, not a separate system.
-
-## Capture Session
-
-Represents a single capture event.
-
-Fields:
-
-- id
-- audio_ref
-- transcript
-- transcript_segments (optional)
-- created_at
-- metadata
-
-Notes:
-
-CaptureSession management is handled by orchestration and not exposed to the LLM.

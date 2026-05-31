@@ -43,6 +43,8 @@ Audio is transcribed using ASR.
 
 Transcript is stored in the CaptureSession.
 
+For direct text capture, the submitted text itself is the first user message used for downstream processing and review. For audio capture, the raw audio remains source material and the transcript becomes the first user message used by downstream processing and review.
+
 ### Step 3 - LLM Processing
 
 The transcript or submitted text is provided to an LLM.
@@ -62,12 +64,18 @@ Represents a single capture event.
 Fields:
 
 - id
-- audio_ref
+- source_refs
 - transcript
 - transcript_segments (optional)
+- interaction_history
+- current_state
 - created_at
 - metadata
 
 Notes:
+
+The canonical transcript is stored on the capture session even when the same text also appears as the first user message in the interaction history.
+
+The interaction history attached to the capture session persists meaningful user, assistant, and tool messages.
 
 CaptureSession management is handled by orchestration and not exposed to the LLM.
