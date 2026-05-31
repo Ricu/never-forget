@@ -14,7 +14,7 @@ The backend follows hexagonal architecture:
 * `application` coordinates use cases
 * `adapters` connect the core to external intelligent systems
 * `infrastructure` contains technical implementations
-* `entrypoints` expose the backend to CLI and later HTTP
+* `entrypoints` expose the backend to e.g. CLI and HTTP
 
 ### 2. Follow KISS
 
@@ -100,14 +100,6 @@ It means being explicit when something is:
 * a query / read concern
 
 Whenever a design or implementation choice is influenced by this split, it should be surfaced explicitly to the human so the CQRS aspect stays visible.
-
-## Practical Guidance For Phase 1
-
-* keep the current ingestion flow as a dedicated write-side use case
-* add the future FastAPI layer on top of application services, not beside them
-* keep external integrations behind adapters or infrastructure modules
-* do not add background jobs, distributed processing, or ORM complexity yet
-* when the read side starts, create read-oriented application flows instead of extending ingestion classes into general-purpose backend objects
 
 ## Practical Defaults
 
