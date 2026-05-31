@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ToDo Detail - Never Forget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="mark"></span>Never Forget</div>
+        <nav class="nav">
+          <a href="01-capture.html"><span class="glyph">C</span>Capture</a>
+          <a href="03-review-queue.html"><span class="glyph">R</span>Review</a>
+          <a href="05-memories.html"><span class="glyph">M</span>Memories</a>
+          <a href="07-sessions.html"><span class="glyph">S</span>Sessions</a>
+          <a href="09-contacts.html"><span class="glyph">P</span>Contacts</a>
+          <a class="active" href="11-todos.html"><span class="glyph">T</span>ToDos</a>
+        </nav>
+      </aside>
+      <main class="main">
+        <section class="page">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">ToDo / open</div>
+              <h1>Do my tax</h1>
+            </div>
+            <div class="actions">
+              <button class="btn">Edit</button>
+              <button class="btn primary">Mark done</button>
+            </div>
+          </div>
+          <div class="grid-2">
+            <section class="panel">
+              <div class="panel-head"><h2>Task</h2><span class="badge">open</span></div>
+              <div class="field-grid">
+                <span>Summary</span><strong>Do my tax</strong>
+                <span>Status</span><strong>Open</strong>
+                <span>Deadline</span><strong>None set</strong>
+                <span>Updated</span><strong>Yesterday 22:11</strong>
+              </div>
+              <div style="margin-top: 18px">
+                <div class="meter"><span></span></div>
+                <p class="muted tiny" style="margin-top: 8px">Confidence: likely new persistent todo, no matching open task found.</p>
+              </div>
+            </section>
+            <aside class="stack">
+              <section class="panel">
+                <h2 style="margin-bottom: 12px">Linked memories</h2>
+                <a class="mini-card" href="06-memory-detail.html">
+                  <span class="badge success">todo memory</span>
+                  <p>I need to do my tax.</p>
+                  <p class="muted tiny">Captured yesterday 22:10</p>
+                </a>
+              </section>
+              <section class="panel">
+                <h2 style="margin-bottom: 12px">Source sessions</h2>
+                <a class="mini-card" href="08-capture-session-detail.html">
+                  <strong>Yesterday 22:10</strong>
+                  <p class="muted small">Web app text capture / unreviewed complete</p>
+                </a>
+              </section>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

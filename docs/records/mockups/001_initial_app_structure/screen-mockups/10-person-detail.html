@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Person Detail - Never Forget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="mark"></span>Never Forget</div>
+        <nav class="nav">
+          <a href="01-capture.html"><span class="glyph">C</span>Capture</a>
+          <a href="03-review-queue.html"><span class="glyph">R</span>Review</a>
+          <a href="05-memories.html"><span class="glyph">M</span>Memories</a>
+          <a href="07-sessions.html"><span class="glyph">S</span>Sessions</a>
+          <a class="active" href="09-contacts.html"><span class="glyph">P</span>Contacts</a>
+          <a href="11-todos.html"><span class="glyph">T</span>ToDos</a>
+        </nav>
+      </aside>
+      <main class="main">
+        <section class="page">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Person</div>
+              <h1>Anna Keller</h1>
+            </div>
+            <button class="btn">Edit person</button>
+          </div>
+          <div class="grid-2">
+            <section class="panel">
+              <div class="panel-head"><h2>Linked memories</h2><span class="badge">4 total</span></div>
+              <div class="stack">
+                <a class="mini-card" href="06-memory-detail.html">
+                  <span class="badge blue">friend_note</span>
+                  <p>Anna's birthday is on the 20th of January.</p>
+                  <p class="muted tiny">Today 18:43 / pending confirmation</p>
+                </a>
+                <a class="mini-card" href="06-memory-detail.html">
+                  <span class="badge">moment</span>
+                  <p>Had dinner with Anna and Max after the workshop.</p>
+                  <p class="muted tiny">Last Friday</p>
+                </a>
+              </div>
+            </section>
+            <aside class="stack">
+              <section class="panel">
+                <h2 style="margin-bottom: 12px">Identity</h2>
+                <div class="field-grid">
+                  <span>Name</span><strong>Anna Keller</strong>
+                  <span>Aliases</span><strong>Anna K.</strong>
+                  <span>Created</span><strong>Mar 12</strong>
+                  <span>Updated</span><strong>Today</strong>
+                </div>
+              </section>
+              <section class="panel">
+                <h2 style="margin-bottom: 12px">Source trail</h2>
+                <div class="timeline">
+                  <div class="timeline-item"><span class="rail-dot"></span><p class="muted small">New birthday note from today's capture.</p></div>
+                  <div class="timeline-item"><span class="rail-dot"></span><p class="muted small">Created from dinner note in March.</p></div>
+                </div>
+              </section>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

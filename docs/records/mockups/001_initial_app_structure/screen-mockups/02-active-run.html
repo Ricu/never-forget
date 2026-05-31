@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Active Run - Never Forget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="mark"></span>Never Forget</div>
+        <nav class="nav">
+          <a href="01-capture.html"><span class="glyph">C</span>Capture</a>
+          <a class="active" href="03-review-queue.html"><span class="glyph">R</span>Review</a>
+          <a href="05-memories.html"><span class="glyph">M</span>Memories</a>
+          <a href="07-sessions.html"><span class="glyph">S</span>Sessions</a>
+          <a href="09-contacts.html"><span class="glyph">P</span>Contacts</a>
+          <a href="11-todos.html"><span class="glyph">T</span>ToDos</a>
+        </nav>
+        <div class="side-queue">
+          <div class="side-head"><span>Review</span><span>2</span></div>
+          <a class="side-item active" href="02-active-run.html"><span class="side-time">Today 18:42</span><span class="side-state">running stream</span></a>
+          <a class="side-item" href="04-review-session-detail.html"><span class="side-time">Yesterday 22:10</span><span class="side-state">unreviewed complete</span></a>
+        </div>
+      </aside>
+      <main class="main">
+        <section class="page narrow">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Today 18:42 / running</div>
+              <h1>Active run</h1>
+            </div>
+            <a class="btn ghost" href="04-review-session-detail.html">Review summary</a>
+          </div>
+          <div class="chat">
+            <div class="message user">
+              <div class="bubble">
+                <div class="audio-strip"><span>0:27</span><span class="wave"></span><span>recording.wav</span></div>
+                I just learned that Anna's birthday is on the 20th of January.
+              </div>
+              <div class="message-meta">User input / 18:42</div>
+            </div>
+            <div class="message">
+              <div class="bubble">I found this as person information and am checking whether Anna already exists in Contacts.</div>
+              <div class="message-meta">Agent</div>
+            </div>
+            <div class="message">
+              <div class="tool-call">
+                <div class="row between"><strong>Tool</strong><span>search_persons</span></div>
+                <div>Query: Anna / Result: 2 possible matches</div>
+              </div>
+            </div>
+            <div class="message">
+              <div class="bubble">I need a quick clarification before linking this memory. Which Anna is this?</div>
+              <div class="actions">
+                <button class="btn">Anna Keller</button>
+                <button class="btn">Anna from university</button>
+                <button class="btn ghost">Create new person</button>
+              </div>
+              <div class="message-meta">Waiting for input</div>
+            </div>
+          </div>
+          <details class="artifact-drawer">
+            <summary><span>Extracted artifacts</span><span class="muted">1 draft, collapsed</span></summary>
+            <div class="artifact-body">
+              <div class="mini-card">
+                <div class="row between"><span class="badge blue">friend_note</span><span class="muted tiny">pending link</span></div>
+                <p>Anna's birthday is on the 20th of January.</p>
+              </div>
+            </div>
+          </details>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

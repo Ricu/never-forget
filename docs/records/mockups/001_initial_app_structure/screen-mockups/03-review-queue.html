@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Review Queue - Never Forget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="mark"></span>Never Forget</div>
+        <nav class="nav">
+          <a href="01-capture.html"><span class="glyph">C</span>Capture</a>
+          <a class="active" href="03-review-queue.html"><span class="glyph">R</span>Review</a>
+          <a href="05-memories.html"><span class="glyph">M</span>Memories</a>
+          <a href="07-sessions.html"><span class="glyph">S</span>Sessions</a>
+          <a href="09-contacts.html"><span class="glyph">P</span>Contacts</a>
+          <a href="11-todos.html"><span class="glyph">T</span>ToDos</a>
+        </nav>
+        <div class="side-queue">
+          <div class="side-head"><span>Review</span><span>2</span></div>
+          <a class="side-item active" href="04-review-session-detail.html"><span class="side-time">Today 18:42</span><span class="side-state">waiting for input</span></a>
+          <a class="side-item" href="04-review-session-detail.html"><span class="side-time">Yesterday 22:10</span><span class="side-state">unreviewed complete</span></a>
+        </div>
+      </aside>
+      <main class="main">
+        <section class="page">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">2 sessions</div>
+              <h1>Review queue</h1>
+            </div>
+          </div>
+          <div class="filters">
+            <input class="input" style="max-width: 280px" placeholder="Search queue" />
+            <button class="btn">Needs input</button>
+            <button class="btn ghost">Completed</button>
+            <button class="btn ghost">Failed</button>
+          </div>
+          <div class="list">
+            <a class="list-row selected" href="04-review-session-detail.html">
+              <div class="compact-row">
+                <div>
+                  <div class="row"><span class="meta-glyph">W</span><strong>Today 18:42</strong><span class="badge">waiting for input</span></div>
+                  <p class="muted small">Anna's birthday is on the 20th of January.</p>
+                </div>
+                <span class="badge">1 memory</span>
+              </div>
+            </a>
+            <a class="list-row" href="04-review-session-detail.html">
+              <div class="compact-row">
+                <div>
+                  <div class="row"><span class="meta-glyph">W</span><strong>Yesterday 22:10</strong><span class="badge">unreviewed complete</span></div>
+                  <p class="muted small">I still need to do my tax.</p>
+                </div>
+                <span class="badge success">todo</span>
+              </div>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

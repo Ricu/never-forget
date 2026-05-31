@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sessions - Never Forget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="mark"></span>Never Forget</div>
+        <nav class="nav">
+          <a href="01-capture.html"><span class="glyph">C</span>Capture</a>
+          <a href="03-review-queue.html"><span class="glyph">R</span>Review</a>
+          <a href="05-memories.html"><span class="glyph">M</span>Memories</a>
+          <a class="active" href="07-sessions.html"><span class="glyph">S</span>Sessions</a>
+          <a href="09-contacts.html"><span class="glyph">P</span>Contacts</a>
+          <a href="11-todos.html"><span class="glyph">T</span>ToDos</a>
+        </nav>
+      </aside>
+      <main class="main">
+        <section class="page">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">All capture events</div>
+              <h1>Sessions</h1>
+            </div>
+          </div>
+          <div class="filters">
+            <input class="input" style="max-width: 280px" placeholder="Search transcript" />
+            <button class="btn">All</button>
+            <button class="btn ghost">Audio</button>
+            <button class="btn ghost">Failed</button>
+            <button class="btn ghost">Web app</button>
+          </div>
+          <table class="table">
+            <tr>
+              <th>Created</th>
+              <th>Source</th>
+              <th>Status</th>
+              <th>Preview</th>
+              <th>Artifacts</th>
+            </tr>
+            <tr>
+              <td><a href="08-capture-session-detail.html">Today 18:42</a></td>
+              <td>Web app / audio</td>
+              <td><span class="badge">waiting for input</span></td>
+              <td class="muted">Anna's birthday is on the 20th...</td>
+              <td>1 memory</td>
+            </tr>
+            <tr>
+              <td><a href="08-capture-session-detail.html">Yesterday 22:10</a></td>
+              <td>Web app / text</td>
+              <td><span class="badge success">completed</span></td>
+              <td class="muted">I still need to do my tax.</td>
+              <td>1 memory, 1 todo</td>
+            </tr>
+            <tr>
+              <td><a href="08-capture-session-detail.html">Mon 09:20</a></td>
+              <td>Web app / text</td>
+              <td><span class="badge success">reviewed</span></td>
+              <td class="muted">Google is an interesting employer...</td>
+              <td>1 idea</td>
+            </tr>
+          </table>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

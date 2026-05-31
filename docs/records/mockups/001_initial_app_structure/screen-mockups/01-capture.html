@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Capture - Never Forget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="mark"></span>Never Forget</div>
+        <nav class="nav">
+          <a class="active" href="01-capture.html"><span class="glyph">C</span>Capture</a>
+          <a href="03-review-queue.html"><span class="glyph">R</span>Review</a>
+          <a href="05-memories.html"><span class="glyph">M</span>Memories</a>
+          <a href="07-sessions.html"><span class="glyph">S</span>Sessions</a>
+          <a href="09-contacts.html"><span class="glyph">P</span>Contacts</a>
+          <a href="11-todos.html"><span class="glyph">T</span>ToDos</a>
+        </nav>
+        <div class="side-queue">
+          <div class="side-head"><span>Review</span><span>2</span></div>
+          <a class="side-item" href="04-review-session-detail.html"><span class="side-time">Today 18:42</span><span class="side-state">waiting for input</span></a>
+          <a class="side-item" href="04-review-session-detail.html"><span class="side-time">Yesterday 22:10</span><span class="side-state">unreviewed complete</span></a>
+        </div>
+        <div class="side-foot">Local desktop prototype</div>
+      </aside>
+      <main class="main">
+        <section class="page narrow center-stage">
+          <div class="capture-wrap">
+            <div class="capture-title">
+              <h1>Capture</h1>
+              <p class="muted">Voice, text, or audio.</p>
+            </div>
+            <form class="prompt">
+              <textarea placeholder="What should be remembered?">I just learned that Anna's birthday is on the 20th of January.</textarea>
+              <div class="prompt-foot">
+                <div class="tools">
+                  <button class="icon-btn" type="button" title="Attach audio">+</button>
+                  <button class="icon-btn" type="button" title="Record voice">mic</button>
+                  <span class="badge">web app</span>
+                </div>
+                <button class="btn primary" type="button">Submit</button>
+              </div>
+            </form>
+            <div class="hint-row">
+              <span>Drop audio anywhere</span>
+              <label class="switch"><span class="toggle on"></span>Review immediately</label>
+              <span>2 need review</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
