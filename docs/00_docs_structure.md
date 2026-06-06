@@ -1,5 +1,54 @@
-# Documentation Structure
+# ECKI AI@Workplace Wiki
 
-In the root /docs we have general files, which are standalones. We use folders for different categories. In such folders there should be those files which are primarily concerned with it. E.g. a /backend folder and things like backend tech stack are specific to it. So put the tech stack documentation for the backend in that folder.
+This approach to documentation and context management heavily draws from the following two sources:
 
-Docs should be written in a way that makes sense at the point of reading. I.e. include rationales, and do not write things like "removed x" when x is not described anywhere and is not even in the code anymore.
+- [The Diátaxis Approach to Documentation](https://diataxis.fr/)
+- [Basis - How We Made Our Monorepo Ergonomic for Agents](https://www.getbasis.ai/blogs/how-we-made-our-monorepo-ergonomic-for-agents)
+
+
+## Basic Docs Structure
+
+```
+/canon
+    /tutorial
+    /how-to
+    /reference
+    /explanation
+/records
+    /adrs
+    /prds
+    /mockups
+/draft
+<files...>
+```
+
+### Structure Explanation
+
+| Category              | Question                                                          |
+| --------------------- | ----------------------------------------------------------------- |
+| Canon                 | What is true about the system / project right now?                |
+| Records               | What happened and why?                                            |
+| Draft                 | What is still in progress?                                        |
+|                       |                                                                   |
+| Tutorial / Onboarding | How do I learn this?                                              |
+| How-To                | How do I accomplish a specific task                               |
+| Reference             | What is the exact fact/syntax/definition?                         |
+| Explanation           | Why does it work this way/how should I think about this?          |
+
+## Canon vs Non-Canon
+
+Every artifact in the repo is either a source of truth about the system/project as it is today, or a record of intent and history. It must never be both. Users and AI agents reading the codebase and documentation need an explicit map of what to trust as a description of reality and what to read as a record.
+
+Canon: a source of truth about the system / project today:
+- `docs/canon/**`
+- `AGENTS.md`
+- Agent skills
+- docstrings, and local code comments for the code they describe
+
+Not Canon: intent, history, hypothesis:
+- `docs/records/**`
+- `docs/draft/**`
+- `docs/deprecated/**`
+- GitHub issues
+- PR descriptions
+- other material not belonging to canon.
