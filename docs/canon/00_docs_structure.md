@@ -10,6 +10,7 @@ This approach to documentation and context management heavily draws from the fol
 
 ```
 /canon
+    /agents
     /tutorial
     /how-to
     /reference
@@ -24,16 +25,17 @@ This approach to documentation and context management heavily draws from the fol
 
 ### Structure Explanation
 
-| Category              | Question                                                          |
-| --------------------- | ----------------------------------------------------------------- |
-| Canon                 | What is true about the system / project right now?                |
-| Records               | What happened and why?                                            |
-| Draft                 | What is still in progress?                                        |
-|                       |                                                                   |
-| Tutorial / Onboarding | How do I learn this?                                              |
-| How-To                | How do I accomplish a specific task                               |
-| Reference             | What is the exact fact/syntax/definition?                         |
-| Explanation           | Why does it work this way/how should I think about this?          |
+| Category              | Question                                                 |
+| --------------------- | -------------------------------------------------------- |
+| Canon                 | What is true about the system / project right now?       |
+| Records               | What happened and why?                                   |
+| Draft                 | What is still in progress?                               |
+|                       |                                                          |
+| Agents                | What information is there for agents?                    |
+| Tutorial / Onboarding | How do I learn this?                                     |
+| How-To                | How do I accomplish a specific task                      |
+| Reference             | What is the exact fact/syntax/definition?                |
+| Explanation           | Why does it work this way/how should I think about this? |
 
 ## Canon vs Non-Canon
 
