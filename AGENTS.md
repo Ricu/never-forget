@@ -42,3 +42,10 @@ The canonical triage labels use the default strings. See `docs/canon/agents/tria
 ### Domain docs
 
 Single-context repo guidance; ADRs live under `docs/records/adr`. See `docs/canon/agents/domain.md`.
+
+### Tech Stack
+
+Always read and respect the tech stacks.
+
+@docs\canon\reference\backend\00_tech_stack.md
+@docs\canon\reference\frontend\00_tech_stack.md

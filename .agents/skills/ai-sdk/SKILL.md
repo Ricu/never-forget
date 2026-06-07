@@ -1,6 +1,6 @@
 ---
 name: ai-sdk
-description: 'Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK functions like generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to build AI agents, chatbots, RAG systems, or text generation features, (3) Have questions about AI providers (OpenAI, Anthropic, Google, etc.), streaming, tool calling, structured output, or embeddings, (4) Use React hooks like useChat or useCompletion. Triggers on: "AI SDK", "Vercel AI SDK", "generateText", "streamText", "add AI to my app", "build an agent", "tool calling", "structured output", "useChat".'
+description: 'Answer questions about the AI SDK and help build AI-powered features. Use when working on agentic AI user interfaces. Triggers on e.g. "useChat".'
 ---
 
 ## Prerequisites
@@ -20,10 +20,9 @@ Everything you know about the AI SDK is outdated or wrong. Your training data co
 3. If not found locally, search ai-sdk.dev documentation (instructions below)
 4. Never rely on memory - always verify against source code or docs
 5. **`useChat` has changed significantly** - check [Common Errors](references/common-errors.md) before writing client code
-6. When deciding which model and provider to use (e.g. OpenAI, Anthropic, Gemini), use the Vercel AI Gateway provider unless the user specifies otherwise. See [AI Gateway Reference](references/ai-gateway.md) for usage details.
-7. **Always fetch current model IDs** - Never use model IDs from memory. Before writing code that uses a model, run `curl -s https://ai-gateway.vercel.sh/v1/models | jq -r '[.data[] | select(.id | startswith("provider/")) | .id] | reverse | .[]'` (replacing `provider` with the relevant provider like `anthropic`, `openai`, or `google`) to get the full list with newest models first. Use the model with the highest version number (e.g., `claude-sonnet-4-5` over `claude-sonnet-4` over `claude-3-5-sonnet`).
-8. Run typecheck after changes to ensure code is correct
-9. **Be minimal** - Only specify options that differ from defaults. When unsure of defaults, check docs or source rather than guessing or over-specifying.
+6. When deciding which model and provider to use (e.g. OpenAI, Anthropic, Gemini), ask the user or re-use existing choices.
+7. Run typecheck after changes to ensure code is correct
+8. **Be minimal** - Only specify options that differ from defaults. When unsure of defaults, check docs or source rather than guessing or over-specifying.
 
 If you cannot find documentation to support your answer, state that explicitly.
 
@@ -40,8 +39,7 @@ Provider packages include docs at `node_modules/@ai-sdk/<provider>/docs/`.
 
 ### Earlier versions
 
-1. Search: `https://ai-sdk.dev/api/search-docs?q=your_query`
-2. Fetch `.md` URLs from results (e.g., `https://ai-sdk.dev/docs/agents/building-agents.md`)
+Surface to user.
 
 ## When Typecheck Fails
 
@@ -73,6 +71,5 @@ Before implementing agent consumption:
 ## References
 
 - [Common Errors](references/common-errors.md) - Renamed parameters reference (parameters → inputSchema, etc.)
-- [AI Gateway](references/ai-gateway.md) - Gateway setup and usage
 - [Type-Safe Agents with useChat](references/type-safe-agents.md) - End-to-end type safety with InferAgentUIMessage
 - [DevTools](references/devtools.md) - Set up local debugging and observability (development only)
