@@ -11,15 +11,6 @@ Installing AI Elements is straightforward and can be done in a couple of ways. Y
 
 > **IMPORTANT:** Run all CLI commands using the project's package runner: `npx ai-elements@latest`, `pnpm dlx ai-elements@latest`, or `bunx --bun ai-elements@latest` — based on the project's `packageManager`. Examples below use `npx ai-elements@latest` but substitute the correct runner for the project.
 
-## Prerequisites
-
-Before installing AI Elements, make sure your environment meets the following requirements:
-
-- [Node.js](https://nodejs.org/en/download/), version 18 or later
-- A [Next.js](https://nextjs.org/) project with the [AI SDK](https://ai-sdk.dev/) installed.
-- [shadcn/ui](https://ui.shadcn.com/) installed in your project. If you don't have it installed, running any install command will automatically install it for you.
-- We also highly recommend using the [AI Gateway](https://vercel.com/docs/ai-gateway) and adding `AI_GATEWAY_API_KEY` to your `env.local` so you don't have to use an API key from every provider. AI Gateway also gives $5 in usage per month so you can experiment with models. You can obtain an API key [here](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%2Fapi-keys&title=Get%20your%20AI%20Gateway%20key).
-
 ## Installing Components
 
 You can install AI Elements components using either the AI Elements CLI or the shadcn/ui CLI. Both achieve the same result: adding the selected component’s code and any needed dependencies to your project.
@@ -30,7 +21,7 @@ After running the command, you should see a confirmation in your terminal that t
 
 ## Usage
 
-Once an AI Elements component is installed, you can import it and use it in your application like any other React component. The components are added as part of your codebase (not hidden in a library), so the usage feels very natural.
+Once an AI Elements component is installed, you can import it and use it in your application like any other React component.
 
 ## Example
 
@@ -150,10 +141,6 @@ Check the file exists. If it does, make sure your `tsconfig.json` has a proper p
 2. Check that the file path is correct for your AI tool.
 3. Restart your coding assistant after making changes.
 4. Ensure you have a stable internet connection.
-
-### Still stuck?
-
-If none of these answers help, open an [issue on GitHub](https://github.com/vercel/ai-elements/issues) and someone will be happy to assist.
 
 ## Available Components
 
