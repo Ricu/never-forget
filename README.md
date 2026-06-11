@@ -10,6 +10,23 @@ pnpm --dir webapp install
 uv sync --project backend
 ```
 
+Root `pnpm` is only for Git-hook tooling. `webapp/` keeps its own frontend package state and lockfile.
+
+## Run the app
+
+Backend:
+
+```powershell
+uv run --project backend uvicorn never_forget.bootstrap:app --reload
+```
+
+Frontend:
+
+```powershell
+cd webapp
+pnpm dev
+```
+
 ## Launch both apps together
 
 VS Code alternative:

@@ -5,6 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@11.5.2",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -34,6 +35,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
     "jsdom": "^27.1.0",
+    "only-allow": "^1.2.2",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.16",
     "typescript": "~6.0.2",

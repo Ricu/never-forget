@@ -3,6 +3,7 @@
   "private": true,
   "packageManager": "pnpm@11.5.2",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "hooks:install": "node ./node_modules/lefthook/bin/index.js install",
     "hooks:pre-commit": "powershell -ExecutionPolicy Bypass -File tools/hooks/pre-commit.ps1",
     "hooks:pre-push": "powershell -ExecutionPolicy Bypass -File tools/hooks/pre-push.ps1",
@@ -11,6 +12,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
-    "lefthook": "^1.13.6"
+    "lefthook": "^1.13.6",
+    "only-allow": "^1.2.2"
   }
 }

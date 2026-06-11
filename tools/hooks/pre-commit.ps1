@@ -9,9 +9,9 @@ if ($backendPython = @($stagedFiles | Where-Object { $_ -match "^backend/.*\.py$
 }
 
 $frontendFormat = @(
-    $stagedFiles
-    | Where-Object { $_ -match "^webapp/.*\.(ts|tsx|js|jsx|json|css|md|html|yml|yaml)$" }
-    | ForEach-Object { $_.Substring(7) }
+    $stagedFiles |
+    Where-Object { $_ -match "^webapp/.*\.(ts|tsx|js|jsx|json|css|md|html|yml|yaml)$" } |
+    ForEach-Object { $_.Substring(7) }
 )
 
 if ($frontendFormat) {
@@ -27,9 +27,9 @@ if ($frontendFormat) {
 }
 
 $frontendLint = @(
-    $stagedFiles
-    | Where-Object { $_ -match "^webapp/.*\.(ts|tsx|js|jsx|cjs|mjs)$" }
-    | ForEach-Object { $_.Substring(7) }
+    $stagedFiles |
+    Where-Object { $_ -match "^webapp/.*\.(ts|tsx|js|jsx|cjs|mjs)$" } |
+    ForEach-Object { $_.Substring(7) }
 )
 
 if ($frontendLint) {
