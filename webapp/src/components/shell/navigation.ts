@@ -1,28 +1,28 @@
 export type NavigationItem = {
   to: string
   label: string
-  eyebrow: string
+  glyph: string
 }
 
 export const navigationItems: NavigationItem[] = [
   {
     to: "/capture",
     label: "Capture",
-    eyebrow: "Input now",
+    glyph: "C",
   },
   {
     to: "/review-queue",
     label: "Review Queue",
-    eyebrow: "Needs attention",
+    glyph: "R",
   },
   {
     to: "/sessions",
     label: "Sessions",
-    eyebrow: "Source history",
+    glyph: "S",
   },
   {
     to: "/memory-overview",
     label: "Memory Overview",
-    eyebrow: "Browse output",
+    glyph: "M",
   },
 ]

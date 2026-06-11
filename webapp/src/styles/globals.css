@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
+  --app-canvas: #090909;
+  --app-surface-1: #141414;
+  --app-hairline: #262626;
+  --app-hairline-soft: #1a1a1a;
+  --app-ink: #ffffff;
+  --app-ink-muted: #999999;
+  --app-ink-subtle: #707070;
   font-family: "IBM Plex Sans", "Aptos", "Segoe UI", sans-serif;
-  color: #182215;
+  color: var(--app-ink);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,8 +24,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  color: #1f1a14;
-  background: #f3ecde;
+  color: var(--app-ink);
+  background: var(--app-canvas);
 }
 
 button,

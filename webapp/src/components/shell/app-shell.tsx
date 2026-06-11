@@ -1,27 +1,17 @@
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 
-import { navigationItems } from "@/components/shell/navigation"
 import { SidebarNav } from "@/components/shell/sidebar-nav"
-import { Topbar } from "@/components/shell/topbar"
 
 export function AppShell() {
-  const location = useLocation()
-  const activeItem =
-    navigationItems.find((item) => location.pathname.startsWith(item.to)) ??
-    navigationItems[0]
-
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(218,130,74,0.28),_transparent_25%),linear-gradient(180deg,_#f6efdf_0%,_#f3ecdd_55%,_#efe5d5_100%)] px-4 py-4 text-stone-900 sm:px-6 lg:px-8">
-      <div className="mx-auto grid min-h-[calc(100vh-2rem)] max-w-7xl gap-4 lg:grid-cols-[18rem_minmax(0,1fr)]">
-        <aside className="rounded-[2rem] border border-stone-900/10 bg-stone-950 px-5 py-6 text-stone-100 shadow-[0_24px_80px_rgba(40,24,8,0.22)]">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_76%_-18%,rgba(0,153,255,0.12),transparent_31%),radial-gradient(circle_at_18%_112%,rgba(255,122,61,0.08),transparent_28%),var(--app-canvas)] text-[var(--app-ink)]">
+      <div className="grid min-h-screen lg:grid-cols-[15.75rem_minmax(0,1fr)]">
+        <aside className="border-b border-[var(--app-hairline-soft)] bg-[rgba(9,9,9,0.88)] backdrop-blur-[20px] lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-b-0">
           <SidebarNav />
         </aside>
-        <div className="flex min-h-full flex-col gap-4">
-          <Topbar activeItem={activeItem} />
-          <main className="flex-1 rounded-[2rem] border border-stone-900/10 bg-white/85 p-5 shadow-[0_24px_80px_rgba(78,50,24,0.12)] backdrop-blur sm:p-8">
-            <Outlet />
-          </main>
-        </div>
+        <main className="min-w-0 px-4 py-5 sm:px-6 sm:py-7 lg:px-10 lg:py-8">
+          <Outlet />
+        </main>
       </div>
     </div>
   )
