@@ -1,3 +1,4 @@
+import { Brain } from "lucide-react"
 import { NavLink } from "react-router-dom"
 
 import { navigationItems } from "@/components/shell/navigation"
@@ -10,7 +11,7 @@ export function SidebarNav() {
     <div className="flex h-full flex-col">
       <div className="flex items-center gap-3 px-4 py-4 text-sm font-semibold lg:py-5">
         <span className="bg-card text-card-foreground inline-grid h-7 w-7 place-items-center rounded-lg border shadow-sm">
-          N
+          <Brain className="h-4 w-4" />
         </span>
         <span>Never Forget</span>
       </div>
@@ -34,8 +35,8 @@ export function SidebarNav() {
               })
             }
           >
-            <span className="border-border text-muted-foreground inline-grid h-[18px] w-[18px] place-items-center rounded-md border text-[11px]">
-              {item.glyph}
+            <span className="border-border text-muted-foreground inline-grid h-[18px] w-[18px] place-items-center rounded-md border">
+              <item.icon className="h-3.5 w-3.5" strokeWidth={2} />
             </span>
             <span>{item.label}</span>
           </NavLink>

@@ -1,28 +1,31 @@
+import type { LucideIcon } from "lucide-react"
+import { AudioLines, BookOpenText, Inbox, Telescope } from "lucide-react"
+
 export type NavigationItem = {
   to: string
   label: string
-  glyph: string
+  icon: LucideIcon
 }
 
 export const navigationItems: NavigationItem[] = [
   {
     to: "/capture",
     label: "Capture",
-    glyph: "C",
+    icon: AudioLines,
   },
   {
     to: "/review-queue",
     label: "Review Queue",
-    glyph: "R",
+    icon: Inbox,
   },
   {
     to: "/sessions",
     label: "Sessions",
-    glyph: "S",
+    icon: Telescope,
   },
   {
     to: "/memory-overview",
     label: "Memory Overview",
-    glyph: "M",
+    icon: BookOpenText,
   },
 ]
