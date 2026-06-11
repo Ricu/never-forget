@@ -1,3 +1,11 @@
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/shared/ui/card"
+
 type RoutePlaceholderProps = {
   eyebrow: string
   title: string
@@ -18,11 +26,14 @@ export function RoutePlaceholder({
         </h1>
       </div>
 
-      <article className="rounded-[10px] border border-[var(--app-hairline)] bg-[linear-gradient(180deg,rgba(255,255,255,0.028),transparent),var(--app-surface-1)] p-5 sm:p-6">
-        <p className="max-w-2xl text-sm leading-7 text-[var(--app-ink-muted)]">
-          {summary}
-        </p>
-      </article>
+      <Card>
+        <CardHeader>
+          <CardTitle>Planned Surface</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <CardDescription className="max-w-2xl">{summary}</CardDescription>
+        </CardContent>
+      </Card>
     </section>
   )
 }
