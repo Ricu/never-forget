@@ -1,0 +1,16 @@
+{
+  "name": "never-forget",
+  "private": true,
+  "packageManager": "pnpm@11.5.2",
+  "scripts": {
+    "hooks:install": "node ./node_modules/lefthook/bin/index.js install",
+    "hooks:pre-commit": "powershell -ExecutionPolicy Bypass -File tools/hooks/pre-commit.ps1",
+    "hooks:pre-push": "powershell -ExecutionPolicy Bypass -File tools/hooks/pre-push.ps1",
+    "hooks:commit-msg": "powershell -ExecutionPolicy Bypass -File tools/hooks/commit-msg.ps1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "lefthook": "^1.13.6"
+  }
+}

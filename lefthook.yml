@@ -1,0 +1,14 @@
+pre-commit:
+  commands:
+    quality:
+      run: powershell -ExecutionPolicy Bypass -File tools/hooks/pre-commit.ps1
+
+pre-push:
+  commands:
+    verify:
+      run: powershell -ExecutionPolicy Bypass -File tools/hooks/pre-push.ps1
+
+commit-msg:
+  commands:
+    conventional:
+      run: powershell -ExecutionPolicy Bypass -File tools/hooks/commit-msg.ps1 {1}
