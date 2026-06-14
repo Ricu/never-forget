@@ -73,3 +73,4 @@ Before implementing agent consumption:
 - [Common Errors](references/common-errors.md) - Renamed parameters reference (parameters → inputSchema, etc.)
 - [Type-Safe Agents with useChat](references/type-safe-agents.md) - End-to-end type safety with InferAgentUIMessage
 - [DevTools](references/devtools.md) - Set up local debugging and observability (development only)
+- [AI SDK UI Stream Protocol](references/data-stream-protocol.md) - How to implement streaming in custom UIs
