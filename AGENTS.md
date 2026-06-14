@@ -49,3 +49,8 @@ Always read and respect the tech stacks.
 
 @docs\canon\reference\backend\00_tech_stack.md
 @docs\canon\reference\frontend\00_tech_stack.md
+
+
+### Human in the loop
+
+Impactful architectural and design decision should never be done without the human. E.g. choosing a DB, architectural decisions etc.
