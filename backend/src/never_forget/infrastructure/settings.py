@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -10,6 +12,8 @@ class AppSettings(BaseSettings):
         "http://127.0.0.1:5173",
         "http://localhost:5173",
     )
+    capture_session_database_path: Path = Path("data/never_forget.sqlite3")
+    capture_agent_model: str = "openai:gpt-4.1-mini"
 
     model_config = SettingsConfigDict(
         env_prefix="NEVER_FORGET_",
