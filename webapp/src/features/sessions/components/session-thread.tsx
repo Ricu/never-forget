@@ -30,43 +30,34 @@ export function SessionThread({
     (status === "submitted" || (status === "streaming" && !hasAssistantMessage))
 
   return (
-    <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.6),transparent)]" />
+    <Conversation className="min-h-[26rem]">
+      <ConversationContent className="px-0 py-2 sm:px-0">
+        {messages.length === 0 && !showPendingAssistant ? (
+          <ConversationEmptyState
+            description="Start from the capture page to open a new session thread."
+            icon={<MessageSquareDashed className="h-10 w-10" />}
+            title="No session messages yet"
+          />
+        ) : null}
 
-      <Conversation className="min-h-[26rem]">
-        <ConversationContent className="gap-6 px-4 py-5 sm:px-6 sm:py-6">
-          {messages.length === 0 && !showPendingAssistant ? (
-            <ConversationEmptyState
-              description="Start from the capture interface to open a new session thread."
-              icon={<MessageSquareDashed className="h-10 w-10" />}
-              title="No session messages yet"
-            />
-          ) : null}
+        {messages.map((message) => (
+          <MessagePartsRenderer key={message.id} message={message} />
+        ))}
 
-          {messages.map((message) => (
-            <MessagePartsRenderer key={message.id} message={message} />
-          ))}
-
-          {showPendingAssistant ? <PendingAssistantRow /> : null}
-        </ConversationContent>
-        <ConversationScrollButton />
-      </Conversation>
-    </div>
+        {showPendingAssistant ? <PendingAssistantRow /> : null}
+      </ConversationContent>
+      <ConversationScrollButton />
+    </Conversation>
   )
 }
 
 function PendingAssistantRow() {
   return (
     <Message from="assistant">
-      <MessageContent className="w-full max-w-xl rounded-[24px] border border-white/8 bg-white/[0.03] px-4 py-4">
-        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+      <MessageContent className="text-muted-foreground">
+        <div className="flex items-center gap-3 text-sm">
           <LoaderCircle className="h-4 w-4 animate-spin" />
-          <span>Assistant response is connecting.</span>
-        </div>
-        <div className="mt-4 space-y-2">
-          <div className="h-2.5 w-2/3 rounded-full bg-white/10" />
-          <div className="h-2.5 w-[92%] rounded-full bg-white/8" />
-          <div className="h-2.5 w-1/2 rounded-full bg-white/8" />
+          <span>Thinking...</span>
         </div>
       </MessageContent>
     </Message>

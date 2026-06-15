@@ -20,16 +20,18 @@ export function SessionStateNotice({
   return (
     <div
       className={cn(
-        "flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm",
+        "flex items-start gap-3 rounded-xl border px-4 py-3 text-sm",
         tone === "error"
-          ? "border-red-400/20 bg-red-500/10 text-red-50"
-          : "border-white/10 bg-white/[0.04] text-foreground",
+          ? "border-destructive/20 bg-destructive/5 text-foreground"
+          : "border-border bg-muted/20 text-foreground",
       )}
     >
       <div
         className={cn(
           "mt-0.5 rounded-full p-1.5",
-          tone === "error" ? "bg-red-500/20" : "bg-sky-400/12",
+          tone === "error"
+            ? "bg-destructive/10 text-destructive"
+            : "bg-muted text-muted-foreground",
         )}
       >
         {pending ? (
@@ -45,8 +47,8 @@ export function SessionStateNotice({
         <p className="font-medium">{title}</p>
         <p
           className={cn(
-            "leading-6",
-            tone === "error" ? "text-red-100/80" : "text-muted-foreground",
+            "leading-6 text-muted-foreground",
+            tone === "error" && "text-destructive/80",
           )}
         >
           {description}

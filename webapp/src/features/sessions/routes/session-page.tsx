@@ -156,7 +156,7 @@ export function SessionPage() {
   })
 
   return (
-    <section className="mx-auto flex w-full max-w-5xl flex-col gap-6">
+    <section className="mx-auto flex w-full max-w-5xl flex-col gap-4 pb-8">
       <SessionPageHeader sessionId={actualSessionId} />
 
       {notice ? (
@@ -203,11 +203,10 @@ function buildSessionNotice({
 }: BuildSessionNoticeOptions) {
   if (isNewSessionRoute && !hasRouteState) {
     return {
-      description:
-        "This temporary session route only exists while a fresh capture is being started.",
+      description: "New sessions start from the capture page.",
       pending: false,
       showBackToCapture: true,
-      title: "Start this flow from the capture interface.",
+      title: "Start from Capture.",
       tone: "error" as const,
     }
   }
@@ -217,7 +216,7 @@ function buildSessionNotice({
       description: errorMessage,
       pending: false,
       showBackToCapture: true,
-      title: "The capture session could not be started.",
+      title: "Couldn't start this capture.",
       tone: "error" as const,
     }
   }
@@ -227,40 +226,37 @@ function buildSessionNotice({
       description: errorMessage,
       pending: false,
       showBackToCapture: false,
-      title: "The live session stream was interrupted.",
+      title: "The response was interrupted.",
       tone: "error" as const,
     }
   }
 
   if (persistedStatus === "failed") {
     return {
-      description:
-        "The capture session exists, but processing failed. The thread remains visible so you can inspect what was captured before the failure.",
+      description: "The saved thread is still visible below.",
       pending: false,
       showBackToCapture: false,
-      title: "This capture session failed.",
+      title: "This capture failed.",
       tone: "error" as const,
     }
   }
 
   if (persistedStatus === "processing_underway") {
     return {
-      description:
-        "The session exists, but the persisted assistant result is not complete yet.",
+      description: "The saved response is not ready yet.",
       pending: true,
       showBackToCapture: false,
-      title: "Processing is still underway.",
+      title: "Still processing.",
       tone: "neutral" as const,
     }
   }
 
   if (isQueryError && actualSessionId) {
     return {
-      description:
-        "The session route loaded, but the persisted capture session could not be fetched.",
+      description: "The saved session could not be fetched.",
       pending: false,
       showBackToCapture: false,
-      title: "This capture session could not be loaded.",
+      title: "Couldn't load this session.",
       tone: "error" as const,
     }
   }
