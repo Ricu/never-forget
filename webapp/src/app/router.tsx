@@ -4,6 +4,7 @@ import { AppShell } from "@/components/shell/app-shell"
 import { CapturePage } from "@/features/capture/routes/capture-page"
 import { MemoryOverviewPage } from "@/features/memory-overview/routes/memory-overview-page"
 import { ReviewQueuePage } from "@/features/review-queue/routes/review-queue-page"
+import { SessionPage } from "@/features/sessions/routes/session-page"
 import { SessionsPage } from "@/features/sessions/routes/sessions-page"
 
 export const router = createBrowserRouter([
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "sessions",
         element: <SessionsPage />,
+      },
+      {
+        path: "sessions/:sessionId",
+        element: <SessionPage />,
       },
       {
         path: "memory-overview",
