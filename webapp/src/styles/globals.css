@@ -100,14 +100,14 @@ body {
   color: var(--foreground);
   background:
     radial-gradient(
-      circle at 76% -18%,
-      rgba(59, 130, 246, 0.12),
-      transparent 31%
+      circle at 50% -12%,
+      color-mix(in oklch, var(--foreground) 6%, transparent),
+      transparent 34%
     ),
     radial-gradient(
-      circle at 18% 112%,
-      rgba(249, 115, 22, 0.1),
-      transparent 28%
+      circle at 18% 100%,
+      color-mix(in oklch, var(--foreground) 4%, transparent),
+      transparent 30%
     ),
     var(--background);
 }

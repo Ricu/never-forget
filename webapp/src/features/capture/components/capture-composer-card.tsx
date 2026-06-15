@@ -1,24 +1,19 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { MessageSquareQuote, Orbit, Sparkles } from "lucide-react"
+import { Mic, Plus } from "lucide-react"
 import { useForm, useWatch } from "react-hook-form"
 import { z } from "zod"
 
 import {
   PromptInput,
   PromptInputBody,
+  PromptInputButton,
   PromptInputFooter,
-  type PromptInputMessage,
   PromptInputSubmit,
+  PromptInputTools,
+  type PromptInputMessage,
   PromptInputTextarea,
 } from "@/components/ai-elements/prompt-input"
-import { cn } from "@/shared/lib/utils"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/shared/ui/card"
+import { Badge } from "@/shared/ui/badge"
 
 const capturePromptSchema = z.object({
   text: z.string().trim().min(1, "Enter some text to start a capture session."),
@@ -63,71 +58,57 @@ export function CaptureComposerCard({
   }
 
   return (
-    <Card className="relative overflow-hidden border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] shadow-2xl shadow-black/20">
-      <div className="pointer-events-none absolute inset-y-7 left-5 w-px bg-[linear-gradient(180deg,rgba(125,211,252,0.75),rgba(251,146,60,0.18),transparent)]" />
-      <div className="pointer-events-none absolute left-[17px] top-7 h-4 w-4 rounded-full border border-sky-300/50 bg-sky-300/20 shadow-[0_0_30px_rgba(125,211,252,0.35)]" />
+    <div className="w-full max-w-5xl space-y-7">
+      <div className="space-y-2 text-center">
+        <h1 className="text-[clamp(3rem,8vw,4.5rem)] font-semibold tracking-[-0.04em]">
+          Capture
+        </h1>
+        <p className="text-sm text-muted-foreground sm:text-base">
+          Voice, text, or audio.
+        </p>
+      </div>
 
-      <CardHeader className="gap-4 pl-11">
-        <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-200/72">
-          <Orbit className="h-3.5 w-3.5" />
-          Direct Text Capture
-        </div>
-
-        <div className="space-y-2">
-          <CardTitle className="text-[clamp(30px,5vw,48px)] leading-[1.02] tracking-[-0.03em]">
-            Move the thought into a session while it is still clear.
-          </CardTitle>
-          <CardDescription className="max-w-2xl text-base leading-7 text-[color:rgba(255,255,255,0.72)]">
-            Submit one fresh text prompt. The app will open the capture session
-            view immediately and stream the first assistant pass there.
-          </CardDescription>
-        </div>
-      </CardHeader>
-
-      <CardContent className="space-y-5 pl-11">
-        <PromptInput
-          className="rounded-[28px] border border-white/10 bg-black/20 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur"
-          onSubmit={handlePromptSubmit}
-        >
+      <div className="space-y-3">
+        <PromptInput onSubmit={handlePromptSubmit}>
           <PromptInputBody>
             <PromptInputTextarea
               aria-label="Capture prompt"
-              className="min-h-32 border-none bg-transparent px-1 text-[15px] leading-7 shadow-none focus-visible:ring-0"
+              className="min-h-40 text-base sm:text-lg"
               onChange={(event) => {
                 form.setValue("text", event.currentTarget.value, {
                   shouldDirty: true,
                   shouldTouch: true,
+                  shouldValidate: true,
                 })
               }}
-              placeholder="Write what you want to remember."
+              placeholder="What should be remembered?"
               value={text ?? ""}
             />
           </PromptInputBody>
 
-          <PromptInputFooter className="mt-3 border-t border-white/8 pt-3">
-            <div className="flex min-w-0 items-center gap-2 text-xs text-[color:rgba(255,255,255,0.54)]">
-              <MessageSquareQuote className="h-3.5 w-3.5 shrink-0" />
-              <span className="truncate">
-                The first user message becomes the opening transcript.
-              </span>
-            </div>
+          <PromptInputFooter className="w-full items-center">
+            <PromptInputTools>
+              <PromptInputButton aria-label="Add attachment" size="icon-sm">
+                <Plus className="size-4" />
+              </PromptInputButton>
+              <PromptInputButton aria-label="Record voice" size="icon-sm">
+                <Mic className="size-4" />
+              </PromptInputButton>
+              <Badge className="h-8 rounded-full px-3" variant="outline">
+                web app
+              </Badge>
+            </PromptInputTools>
 
-            <PromptInputSubmit
-              className={cn("rounded-full px-4", !text?.trim() && "opacity-60")}
-              disabled={!text?.trim()}
-            >
-              <Sparkles className="h-4 w-4" />
-              <span>Start session</span>
-            </PromptInputSubmit>
+            <PromptInputSubmit className="ml-auto" />
           </PromptInputFooter>
         </PromptInput>
 
         {form.formState.errors.text ? (
-          <p className="text-sm text-amber-300">
+          <p className="text-sm text-destructive" role="alert">
             {form.formState.errors.text.message}
           </p>
         ) : null}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }
