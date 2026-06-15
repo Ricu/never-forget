@@ -25,6 +25,12 @@
       "skillPath": "skills/building-pydantic-ai-agents/SKILL.md",
       "computedHash": "0ed2ea54eacc0ba3d27351babbb79f9f7b8cd110f08e4e97f9ab91842a122a5f"
     },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "93f53fd1c0352d3d7ec17b8f73d7351bf76f4821e55d123c9d2abc2c53ba48e4"
+    },
     "pydantic-ai-harness": {
       "source": "pydantic/skills",
       "sourceType": "github",

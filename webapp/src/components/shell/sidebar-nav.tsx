@@ -2,6 +2,7 @@ import { Brain } from "lucide-react"
 import { NavLink } from "react-router-dom"
 
 import { navigationItems } from "@/components/shell/navigation"
+import { ThemeToggle } from "@/components/shell/theme-toggle"
 import { cn } from "@/shared/lib/utils"
 import { buttonVariants } from "@/shared/ui/button-variants"
 import { Separator } from "@/shared/ui/separator"
@@ -42,6 +43,8 @@ export function SidebarNav() {
           </NavLink>
         ))}
       </nav>
+
+      <ThemeToggle />
     </div>
   )
 }
