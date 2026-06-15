@@ -38,38 +38,37 @@ export function SessionPage() {
   const [resolvedSessionId, setResolvedSessionId] = useState<string | null>(
     isNewSessionRoute ? null : routeSessionId,
   )
-  const liveChatIdRef = useRef(`capture-${crypto.randomUUID()}`)
+  const [liveChatId] = useState(() => `capture-${crypto.randomUUID()}`)
   const hasStartedInitialSubmissionRef = useRef(false)
-  const transportRef = useRef<DefaultChatTransport<UIMessage> | null>(null)
+  const [transport] = useState(
+    () =>
+      new DefaultChatTransport<UIMessage>({
+        api: buildApiUrl("/api/capture-sessions/text/stream"),
+        fetch: async (input, init) => {
+          const response = await fetch(input, init)
+          const captureSessionId = response.headers.get("x-capture-session-id")
 
-  if (transportRef.current === null) {
-    transportRef.current = new DefaultChatTransport<UIMessage>({
-      api: buildApiUrl("/api/capture-sessions/text/stream"),
-      fetch: async (input, init) => {
-        const response = await fetch(input, init)
-        const captureSessionId = response.headers.get("x-capture-session-id")
+          if (captureSessionId) {
+            startTransition(() => {
+              setResolvedSessionId((currentSessionId) => {
+                if (currentSessionId) {
+                  return currentSessionId
+                }
 
-        if (captureSessionId) {
-          startTransition(() => {
-            setResolvedSessionId((currentSessionId) => {
-              if (currentSessionId) {
-                return currentSessionId
-              }
-
-              return captureSessionId
+                return captureSessionId
+              })
             })
-          })
-        }
+          }
 
-        return response
-      },
-    })
-  }
+          return response
+        },
+      }),
+  )
 
   const actualSessionId = isNewSessionRoute ? resolvedSessionId : routeSessionId
 
   const { clearError, error, messages, sendMessage, status } = useChat({
-    id: liveChatIdRef.current,
+    id: liveChatId,
     onError: () => {
       if (!actualSessionId) {
         return
@@ -88,7 +87,7 @@ export function SessionPage() {
         queryKey: ["capture-session", actualSessionId],
       })
     },
-    transport: transportRef.current,
+    transport,
   })
 
   const sessionQuery = useQuery({
@@ -124,7 +123,7 @@ export function SessionPage() {
 
     hasStartedInitialSubmissionRef.current = true
     void startInitialCapture()
-  }, [isNewSessionRoute, routeState, startInitialCapture])
+  }, [isNewSessionRoute, routeState])
 
   useEffect(() => {
     if (!isNewSessionRoute || !resolvedSessionId) {
@@ -132,7 +131,7 @@ export function SessionPage() {
     }
 
     syncResolvedRoute(resolvedSessionId)
-  }, [isNewSessionRoute, resolvedSessionId, syncResolvedRoute])
+  }, [isNewSessionRoute, resolvedSessionId])
 
   const persistedStatus = sessionQuery.data?.status
   const showLiveMessages =

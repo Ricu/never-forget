@@ -62,7 +62,7 @@ function isFileAttachment(
   return data.type === "file"
 }
 
-export function getMediaCategory(data: AttachmentData): MediaCategory {
+function getMediaCategory(data: AttachmentData): MediaCategory {
   if (data.type === "source-document") {
     return "source"
   }
@@ -86,7 +86,7 @@ export function getMediaCategory(data: AttachmentData): MediaCategory {
   return "unknown"
 }
 
-export function getAttachmentLabel(data: AttachmentData): string {
+function getAttachmentLabel(data: AttachmentData): string {
   if (data.type === "source-document") {
     return data.filename ?? data.title
   }
